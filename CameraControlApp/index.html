@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Raspberry Camera Control</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="stylesheet" href="vendors/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendors/bootstrap/css/darkstrap.min.css">
+    <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
+    <!--[if lt IE 7]><link rel="stylesheet" href="http://blueimp.github.com/cdn/css/bootstrap-ie6.min.css"><![endif]-->
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+
+    <div id="main-controls" class="hide">
+
+    </div>
+
+    <div id="picture"></div>
+    <script id="picture-template" type="text/template">
+        <img src="{{filename}}" alt="">
+    </script>
+
+    <div id="sidebar">
+        <button id="toggle-button"><i class="icon-reorder"></i></button>
+        <div class="container">
+            <div id="shot-controls">
+                <button id="shot-button" class="btn btn-large btn-block"><i class="icon-camera-retro"></i> Shot</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <ul class="thumbnails"></ul>
+    </div>
+    <script id="thumbnail-template" type="text/template">
+    {{#images}}
+        <li class="span2">
+            <a href="javascript:void(0)" class="thumbnail">
+                <img src="{{filename}}" alt="">
+            </a>
+        </li>
+    {{/images}}
+    </script>
+
+    <div id="alert" class="hide"></div>
+    <script id="alert-message-template" type="text/template">
+        <div id="alert-message">
+            <i class="{{icon}} icon-3x"></i>
+            <span>{{message}}</span>
+        </div>
+    </script>
+
+
+    <!-- JS Libs -->
+    <script src="vendors/jquery/jquery-2.0.1.min.js"></script>
+
+    <!-- Image Zoom for Touch Mobile: https://github.com/bummzack/jquery-imagezoom -->
+    <script src="vendors/jquery/hammer.min.js"></script>
+    <script src="vendors/jquery/jquery.hammer.min.js"></script>
+    <script src="vendors/jquery/jquery.mousewheel.js"></script>
+    <script src="vendors/jquery/jquery.imagezoom.min.js"></script>
+    <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendors/bootstrap-image-gallery/js/load-image.min.js"></script>
+
+    <script src="vendors/json2.js"></script>
+    <script src="vendors/backbone/underscore-min.js"></script>
+    <script src="vendors/backbone/backbone-min.js"></script>
+    <script src="vendors/mustache.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
