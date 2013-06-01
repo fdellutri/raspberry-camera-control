@@ -35,7 +35,7 @@ def shot():
     for file in os.listdir("/CameraControl/raspberry-camera-control/CameraControlServices/pictures"):
         if file.endswith(".jpg") or file.endswith(".jpeg"):
             files.append('/pictures/' + file)
-    if files.count() > 0:
+    if len(files) > 0:
         filename = choice(files)
         return flask.jsonify(success=True, filename=filename)
     else:
