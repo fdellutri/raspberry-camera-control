@@ -32,7 +32,7 @@ def main():
 @app.route('/shot')
 def shot():
     files = []
-    for file in os.listdir("/home/fdellutri/Scrivania/project/src/CameraControlServices/pictures"):
+    for file in os.listdir("/CameraControl/raspberry-camera-control/CameraControlServices/pictures"):
         if file.endswith(".jpg") or file.endswith(".jpeg"):
             files.append(file)
     filename = '/pictures/' + choice(files)
@@ -41,7 +41,7 @@ def shot():
 @app.route('/images-list')
 def imagesList():
     images = []
-    for file in os.listdir("/home/fdellutri/Scrivania/project/src/CameraControlServices/pictures"):
+    for file in os.listdir("/CameraControl/raspberry-camera-control/CameraControlServices/pictures"):
         if file.endswith(".jpg") or file.endswith(".jpeg"):
             images.append({'filename': '/pictures/' + file})
     return flask.jsonify(success=True, images=images)
