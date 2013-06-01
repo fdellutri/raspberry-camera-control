@@ -34,9 +34,12 @@ def shot():
     files = []
     for file in os.listdir("/CameraControl/raspberry-camera-control/CameraControlServices/pictures"):
         if file.endswith(".jpg") or file.endswith(".jpeg"):
-            files.append(file)
-    filename = '/pictures/' + choice(files)
-    return flask.jsonify(success=True, filename=filename)
+            files.append('/pictures/' + file)
+    if files.count() > 0:
+        filename = choice(files)
+        return flask.jsonify(success=True, filename=filename)
+    else:
+        return flask.jsonify(success=False, message="Cannot take a picture")
 
 @app.route('/images-list')
 def imagesList():
