@@ -1,5 +1,10 @@
 import re
 import time
+from datetime import datetime, timedelta
+import random, string
+
+def randomword(length):
+   return ''.join(random.choice(string.lowercase) for i in range(length))
 
 class Wrapper(object):
 
@@ -100,13 +105,16 @@ class GPhoto(Wrapper):
 
 
     def capture_image_and_download(self):
-        code, out, err = self.call(self._CMD + " --capture-image-and-download --folder='static'")
+        picture_folder = "/CameraControl/raspberry-camera-control/CameraControlServices/pictures"
+        filename = 'cc_' + randomword(10) + '.jpg'
+
+        code, out, err = self.call(self._CMD + " --capture-image-and-download --filename %s/%s" % (picture_folder, filename))
         if code != 0:
             raise Exception(err)
-        filename = None
-        for line in out.split('\n'):
-            if line.startswith('Saving file as '):
-                filename = line.split('Saving file as ')[1]
+#        filename = None
+#        for line in out.split('\n'):
+#            if line.startswith('Saving file as '):
+#                filename = line.split('Saving file as ')[1]
         return filename
 
     def get_shutter_speeds(self):

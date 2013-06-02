@@ -19,7 +19,7 @@
 
     <div id="picture"></div>
     <script id="picture-template" type="text/template">
-        <img src="{{filename}}" alt="">
+        <img src="{{& filename}}" alt="">
     </script>
 
     <div id="sidebar">
@@ -38,7 +38,7 @@
     {{#images}}
         <li class="span2">
             <a href="javascript:void(0)" class="thumbnail">
-                <img src="{{filename}}" alt="">
+                <img src="http://10.0.0.1{{& filename}}" alt="">
             </a>
         </li>
     {{/images}}

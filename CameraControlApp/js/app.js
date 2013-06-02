@@ -88,7 +88,7 @@ var Footer = Backbone.View.extend({
 });
 
 var isMobile = false;
-
+/*
 var source = new EventSource('/services/stream');
     source.onmessage = function (event) {
         var data = JSON.parse(event.data);
@@ -97,6 +97,7 @@ var source = new EventSource('/services/stream');
             message('icon-camera', data.message, true);
         }
 };
+*/
 
 $(document).ready(function() {
     //message('icon-camera', 'Camera connected');
