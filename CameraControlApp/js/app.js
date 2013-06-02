@@ -17,11 +17,12 @@ var SideBar = Backbone.View.extend({
 
     events: {
         'click #shot-button': 'shot',
+        'click #poweroff-button': 'poweroff',
         'click #toggle-button': 'toggle'
     },
 
     initialize: function() {
-        _.bindAll(this, 'shot');
+        _.bindAll(this, 'shot', 'poweroff');
     },
 
     shot: function() {
@@ -35,6 +36,23 @@ var SideBar = Backbone.View.extend({
                     var html = Mustache.to_html(template, data);
                     $('#picture').html(html);
                     $('#alert').fadeOut('slow');
+                } else {
+                    $('#alert').hide();
+                    message('icon-exclamation-sign', data.message, true);
+                }
+            }
+        });
+    },
+
+    poweroff: function() {
+        message('icon-remove-circle', 'Powering off...');
+        $.ajax({
+            url: '/services/poweroff',
+            dataType: 'json',
+            success: function(data) {
+                if (!data.success) {
+                    $('#alert').hide();
+                    message('icon-exclamation-sign', data.message, true);
                 }
             }
         });
